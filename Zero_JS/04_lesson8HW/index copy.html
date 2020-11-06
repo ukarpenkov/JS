@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div style="background-color: aquamarine;width: 500px; border: 1px solid black;">
+    <div>
+        <input id="login" type="text">
+    </div>
+    <div>
+        <input id='pass' type="password">
+    </div>
+    <div>
+        <input id="check" type="checkbox" name="option2" style="float: left;">remember me </input>
+    </div>
+    <div>
+        <button id="button" style="float: right; ">LogIn</button>
+    </div>
+</div>
+
+
+<script>
+    let login = document.getElementById('login')
+    let password = document.getElementById('pass')
+    let check = document.getElementById('check')
+    var loginButton = document.getElementById('button');
+    loginButton.onclick = function() {
+    
+    if (check.checked) {
+    CheckEl = true}
+    else{
+        check = false}
+
+    alert(`login: ${login.value}, pass: ${password.value}, check: ${CheckEl}`);
+    }
+</script>
+</body>
+</html>

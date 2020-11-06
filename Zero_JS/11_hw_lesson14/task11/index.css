@@ -1,0 +1,17 @@
+.container {
+  position: relative;
+}
+
+.context-menu {
+  width: 100px;
+  height: 100px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.hidden {
+  display: none;
+}

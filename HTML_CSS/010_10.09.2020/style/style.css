@@ -1,0 +1,14 @@
+h1 {
+    color: gold;
+}
+
+img[title='smile'] {
+    width: 100px;
+}
+
+a[href="https://yandex.ru/"] {
+    color: greenyellow;
+}
+a[href='https://duckduckgo.com/']{
+    font-weight: bold;
+}

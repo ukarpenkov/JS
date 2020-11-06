@@ -1,0 +1,14 @@
+#sub-menu-city {
+  display: none;
+}
+#sub-menu-lang {
+  display: none;
+}
+
+.show {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
+}

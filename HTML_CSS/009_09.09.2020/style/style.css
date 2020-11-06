@@ -1,0 +1,37 @@
+a:hover {
+    color: red;
+}
+a:active{
+    font-size: 20px;
+    color: red;
+}
+a:link{
+    color: chartreuse;
+}
+a:visited{
+    color: darkgray;
+}
+
+p:first-letter{
+    color: darkred;
+    font-size: 30px;
+}
+p:first-line{
+    font-weight: bold;
+}
+input:focus{
+    color: darksalmon;
+    background: #fffccc;
+    border-color: deeppink;
+}
+.test::before{
+    content: 'УРА!!!';
+}
+.test::after{
+    content: 'Привет!';
+    color: deeppink;
+}
+p::selection{
+    color: gainsboro;
+    background: gold;
+}

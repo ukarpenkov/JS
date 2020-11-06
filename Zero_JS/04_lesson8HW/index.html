@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id='first-name' value='Dmitry' class='first-name-input' />
+    <input id='last-name' value='Karp' class='last-name-input' />
+    <input id='address' value='Blukhera 9' class='address-input' />
+    <select name="" id="city">
+        <option id="msk">msk</option>
+        <option selected>spb</option>
+        <option >minsk</option>
+    </select>
+    <br>
+    <textarea name="" id="hobby" cols="30" rows="10">
+        -js
+        -gym
+        -skate
+    </textarea>
+    <div id='pic'>
+        <img id='mullen' src="https://ss.sport-express.ru/userfiles/materials/38/384687/large.jpg" alt="Родне Муллен">
+    </div>
+
+<script>
+	// находим элемент по айдишнику и  результат (найденный элемент) присваиваем переменной firstNameEl
+	var firstNameEl = document.getElementById('first-name');
+	var lastNameEl = document.getElementById('last-name');
+	var address = document.getElementById('address');
+	var cityChoose = document.getElementById('city');
+	var cityMsk = document.getElementById('msk');
+	var myHobby = document.getElementById('hobby');
+    var pic = document.getElementById('pic');
+    let mullen = document.getElementById('mullen')
+	// выводим в консоль значение атрибута value у найденного элемента	
+    console.log(firstNameEl.value);
+    console.log(firstNameEl.className);
+    console.log(lastNameEl.value);
+    console.log(lastNameEl.className);
+    console.log(address.value);
+    console.log(address.className);
+    console.log(cityChoose.value);
+    console.log(cityMsk.innerHTML);
+    console.log(myHobby.innerHTML);
+    console.log(myHobby.value);
+    console.log(pic.innerHTML);
+    console.log(pic.value);
+    console.log(mullen.src);
+    console.log(mullen.alt);
+</script>
+</body>
+</html>

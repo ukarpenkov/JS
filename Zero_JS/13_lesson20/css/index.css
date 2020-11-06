@@ -1,0 +1,44 @@
+.section-news li {
+  padding: 10px;
+}
+
+.section-hot li:hover {
+  background-color: teal;
+}
+
+.section-realty li:hover {
+  background-color: rgb(120, 172, 104);
+}
+
+.hot-header {
+  background-color: rgb(175, 231, 238);
+}
+
+.realty-header {
+  background-color: rgb(148, 230, 168);
+}
+
+.news-content .section-hot .footer {
+  color: rgb(240, 189, 61);
+  background-color: white;
+}
+
+.news-content .section-realty .footer {
+  color: rgb(32, 218, 209);
+  background-color: white;
+}
+
+h2 {
+  padding: 10px;
+}
+.section-hot h2 {
+  color: rgb(58, 240, 12);
+}
+
+.section-realty h2 {
+  color: rgb(27, 24, 189);
+}
+
+.section-news li a:hover {
+  color: aliceblue;
+}

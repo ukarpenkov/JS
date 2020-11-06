@@ -1,0 +1,31 @@
+p.test{
+   
+    border-top: 1px solid #f53;
+    
+}
+p.test2{
+    border: 2px solid rgb(65, 16, 6);
+    background-color: red;
+    border-radius: 40px/20px;
+    padding: 5px;
+    
+    overflow: auto;
+    max-height: 100px;
+    max-width: 30em;
+}
+
+li{
+    display: inline;
+}
+
+p{
+    box-shadow: -4px 4px 20px #b92323; /* горизонт вертикаль размытие цвет*/
+}
+h2{
+    width: 250px;
+    padding: 15px;
+    border-width: 5px;
+    margin: 10px;
+    border: 1px solid black;
+    box-sizing: border-box;
+}

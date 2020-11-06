@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="style/style.css">
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&family=Oswald:wght@200;300;400&family=Titillium+Web:ital,wght@0,200;0,300;1,200&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kurale">
+		<title>Селекторы</title>
+	</head>
+<body>
+	<article>
+		<h1>HTML Student form</h1>
+		<form action="/" method="POST" class="subform">
+			<p>
+				<label for="name">What is your name</label>
+				<input type="text" name="name" id="name">
+			</p>
+			<p>
+				<label for="email">Enter your email</label>
+				<input type="email" name="email" id="email">
+			</p>
+			<p>You have exp of study:
+				<label for="">
+					<input type="radio" name="skill" value="1">
+					JS
+				</label>
+				<label for="">
+					<input type="radio" name="skill" value="1">
+					HTML
+				</label>
+				<label for="">
+					<input type="radio" name="skill" value="1">
+					PHP
+				</label>
+			</p>
+			<p>
+			<label for="goal">Your point!!??</label>
+			<select name="goal" id="goal">
+				<option>I wanna change job</option>
+				<option>up to skill</option>
+				<option>for hobby!!!</option>
+				<option>for FUN!!!!</option>
+			</select>	
+			</p>	
+			<label for='comments'>Your recomend</label>
+			<textarea name="comments" cols="40" rows="5" id="comments"></textarea>
+			<br>
+			<input type="submit" value="Send">
+		</form> 
+		 
+	</article>
+</body>
+</html>

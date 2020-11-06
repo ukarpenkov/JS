@@ -1,0 +1,25 @@
+body {
+    padding: 20px;
+}
+h1 {
+    font-family: Arial, Helvetica, Verdana;
+}
+p {
+    font-size:  1.2em;
+    /* font-style: normal; */
+    font-family: 'Open Sans Condensed', sans-serif;
+    color: rgb(43, 41, 42);
+    background-color: rgb(234, 243, 239);
+    /* text-transform: uppercase; */
+    /* font-variant: small-caps; */
+    /* text-decoration: underline; */
+    letter-spacing: 2px;
+    word-spacing: 3px;
+}
+a {
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}

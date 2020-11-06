@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id='checkName'>
+    <input value='Dmitry' class='first-name-input default-input' id='first-name' />
+    </div>
+    <input value='Kuzyuberdin' class='last-name-input default-input' id='last-name' />
+    <input value='Minsk city' class='address-input default-input' id='address' />
+    
+    <select id='cities'>
+      <option>Kiev</option>
+      <option>Minsk</option>
+      <option selected>Moscow</option>
+    </select>
+    
+    <textarea id='hobbies'>JS, CSS, HTML</textarea>
+    
+    <div id='avatar-wrapper'>
+      <img id='avatar' src='https://pp.userapi.com/c631924/v631924026/44d7/AiFmeYaLmTc.jpg' alt='аватар' />
+    </div>
+    
+    <button id='make-changes'>go</button>
+
+    <script>
+       var goButton = document.getElementById('make-changes');
+       goButton.onclick = function() {
+          // тому что слева, мы присваиваем то, что что справа 
+      var firstNameId = 'first-name';
+      // = это оператор присваивания ... то есть то что слева (переменная), ей присваивается значение справа. 
+      var firstNameEl = document.getElementById(firstNameId);	
+      var checkName = document.getElementById('checkName')
+      
+            // а можно не создавать отдельную переменную для id и сразу передавать значение id в метод getElementById
+      var lastNameEl = document.getElementById('last-name');
+      var addressEl = document.getElementById('address')
+      var citiesEl = document.getElementById('cities')
+      var hobbiesEl = document.getElementById('hobbies');
+      var avatarWrapperEl = document.getElementById('avatar-wrapper');
+      var avatarEl = document.getElementById('avatar');
+            // то это значит, что firstNameEl.value приобретёт новое значение 'Andrey'  
+      // firstNameEl.value = 'Dmitry';
+      lastNameEl.value = 'Ivanov'
+      addressEl.value = 'Saint-P'
+      citiesEl.value = 'Kiev'
+      hobbiesEl.innerHTML = 'Slesar, Plain, Pool'
+      avatarEl.src = 'https://images.ua.prom.st/1440764527_saharnaya-kartinka-lyubov.jpg'
+      avatarWrapperEl.innerHTML = '<ul><li>1</li><li>2</li><li>3</li></ul>'
+      debugger
+      if (firstNameEl.value = 'Andrey'){
+        checkName.innerHTML = 'Имя Андрей'
+      } else {
+        checkName.innerHTML = 'Имя не!! Андрей'
+      }
+    
+      
+      
+    
+      
+       }
+       goButton.className = 'new-button'
+
+      
+
+    </script>
+    <style>
+      .new-button {
+        background-color: red;
+        border: 3px solid blue;
+        height: 50px;
+        width: 50px;
+        padding: 5px; 
+        transform: rotate(45deg);
+
+      }
+    </style>
+  </body>
+</html>

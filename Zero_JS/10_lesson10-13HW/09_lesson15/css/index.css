@@ -1,0 +1,24 @@
+.error {
+  border: red 1px solid;
+}
+
+div {
+  padding: 20px;
+}
+
+.hide {
+  display: none;
+}
+.show {
+  display: auto;
+}
+
+input {
+  width: 300px;
+}
+
+.shlop {
+  width: 600px;
+  transition: width 1s;
+  background-color: ;
+}

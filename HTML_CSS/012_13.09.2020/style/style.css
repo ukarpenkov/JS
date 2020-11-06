@@ -1,0 +1,21 @@
+body{
+   background: rgba(195, 198, 199, 0.9); 
+   color: rgb(63, 63, 63);
+   font-family: Calibry, sans-serif;
+}
+article{
+    width: 900px;
+    margin: 0 auto;
+    background: rgb(243, 205, 200);
+}
+.test{
+    background: seashell;
+}
+
+p span{
+    background: sienna;
+}
+
+p{
+    
+}

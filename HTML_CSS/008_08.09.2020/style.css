@@ -1,0 +1,25 @@
+/* #test {
+    background: red ;
+}
+p{
+    background: yellow;
+}
+p.test1 {
+    background: blue;
+}
+h1.test1 {
+    background: gray;
+} 
+
+.test1 .test11 {
+    background:white;
+} */
+
+.one{
+    font-weight: bold;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2px ;
+}

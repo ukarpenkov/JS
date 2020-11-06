@@ -1,0 +1,8 @@
+input {
+  margin: 20px;
+  display: block;
+}
+
+.error-value {
+  border: red 1px solid;
+}
