@@ -16,7 +16,7 @@ let Users = (props) => {
 
 
     return < div >
-        <button onClick={getUsers}>Get users</button>
+        <button onClick={getUsers} className='hello'>Get users</button>
         {
             props.users.map(u => <div key={u.id}>
                 <span>
