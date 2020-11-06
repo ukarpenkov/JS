@@ -24,18 +24,17 @@ let initialSate =
 const dialogsReducer = (state = initialSate, action) => {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY: {
-            return {
-                ...state,
-                newMessageBody: action.body
-            }
+            let stateCopy = { ...state }
+            stateCopy.newMessageBody = action.body
+            return stateCopy
         }
         case SEND_MESSAGE: {
+            let stateCopy = { ...state }
             let body = state.newMessageBody
-            return {
-                ...state,
-                newMessageBody: '',
-                messages: [...state.messages, { id: 5, message: body }]
-            }
+            state.newMessageBody = ''
+            stateCopy.messages = [...state.messages]
+            stateCopy.messages.push({ id: 5, message: body })
+            return stateCopy
         }
         default:
             return state
@@ -45,4 +44,6 @@ const dialogsReducer = (state = initialSate, action) => {
 export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
 export const updateNewMessageBodyCreator = (body) =>
     ({ type: UPDATE_NEW_MESSAGE_BODY, body: body })
+
+
 export default dialogsReducer;
