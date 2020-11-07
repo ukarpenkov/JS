@@ -6,9 +6,14 @@ let slider1 = {
     slideImage: document.getElementById('slide-img'),
 
     start: function () {
+        let that = this //теперь тхет это слидер1 если так не сделать, то тхиз будет кнопкой а не слацдером - работать не будет
         //subsribe to evets
-        this.buttonLeft.addEventListener('click', this.onShowPrevBtnClick)
-        this.buttonRight.addEventListener('click', this.onShowNextBtnClick)
+        this.buttonLeft.addEventListener('click', function (e) {
+            that.onShowPrevBtnClick(e)
+        })
+        this.buttonRight.addEventListener('click', function (e) {
+            that.onShowNextBtnClick(e)
+        })
 
         //update images array
         this.imgsUrls.push('https://avatarko.ru/img/kartinka/33/multfilm_lyagushka_32117.jpg')
