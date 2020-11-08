@@ -8,9 +8,9 @@
   background-color: black;
   color: white;
   padding: 10px;
-  position: absolute;
-  top: 0px;
-  left: 0px;
+  /* position: absolute; */
+  /* top: 0px;
+  left: 0px; */
 }
 .hidden {
   display: none;
