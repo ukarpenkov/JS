@@ -1,13 +1,20 @@
-let slider1 = {
-    imgsUrls: [],
-    currentImageIndex: 0,
-    buttonLeft: document.getElementById('button-left'),
-    buttonRight: document.getElementById('button-right'),
-    slideImage: document.getElementById('slide-img'),
-
-    start: function () {
+function Slider() {
+    this.imgsUrls = []
+    this.currentImageIndex = 0
+    this.buttonLeft = null // document.querySelector('.show-prew-button'),
+    this.buttonRight = null // document.querySelector('.show-next-button'),
+    this.slideImage = null // document.querySelector('.slide-img'),
+    this.start = function (elId) {
         let that = this //теперь тхет это слидер1 если так не сделать, то тхиз будет кнопкой а не слацдером - работать не будет
         //subsribe to evets
+        let elSelector = '#' + elId
+        let el = document.querySelector(elSelector)
+
+        this.buttonLeft = el.querySelector('.show-prew-btn')
+        this.buttonRight = el.querySelector('.show-next-btn')
+        this.slideImage = el.querySelector('.slide-img')
+
+
         this.buttonLeft.addEventListener('click', function (e) {
             that.onShowPrevBtnClick(e)
         })
@@ -24,8 +31,8 @@ let slider1 = {
 
         this.slideImage.src = this.imgsUrls[this.currentImageIndex]
         this.buttonLeft.disabled = true
-    },
-    onShowPrevBtnClick: function (e) {
+    }
+    this.onShowPrevBtnClick = function (e) {
         this.currentImageIndex--
         this.slideImage.src = this.imgsUrls[this.currentImageIndex]
         this.buttonRight.disabled = false
@@ -33,8 +40,8 @@ let slider1 = {
         if (this.currentImageIndex === (0)) {
             this.buttonLeft.disabled = true
         }
-    },
-    onShowNextBtnClick: function (e) {
+    }
+    this.onShowNextBtnClick = function (e) {
         this.currentImageIndex++
         this.slideImage.src = this.imgsUrls[this.currentImageIndex]
         this.buttonLeft.disabled = false
@@ -45,4 +52,3 @@ let slider1 = {
     }
 }
 
-slider1.start()
