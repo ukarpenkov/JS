@@ -8,9 +8,13 @@ function hideContextMenu(e) {
 
 function showContextMenu(e) {
     //отменяет стандартное действие
+
     e.preventDefault();
     contextMenu.classList.remove('hidden');
+    e.pageX = e.clientX
+    contextMenu.pageX = contextMenu.clientX
 
+    contextMenu.click
     // ЗДЕСЬ ПИШЕМ СВОЙ КОД!!!!
     //помним, что в объекте ивента e содержится много пропертей, среди которых и св-ва с координатами клика  
 
