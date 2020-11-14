@@ -6,8 +6,6 @@ import { follow, setCurrentPage, setUsers, setUsersTotalCount, toggleIsFetching,
 import Preloader from '../common/preloader/Preloader';
 
 
-
-
 class UsersContainer extends React.Component {
     componentDidMount(props) {
         this.props.toggleIsFetching(true)
