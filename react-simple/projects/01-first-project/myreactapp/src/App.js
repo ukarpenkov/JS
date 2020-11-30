@@ -6,6 +6,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
 import UsersContainer from './components/Users/UsersContainer.jsx';
 import ProfileContainer from './components/Profile/ProfileContainer'
 import HeaderContainer from './components/Header/HeaderContainer.jsx';
+import LoginPage from './components/Login/Login';
 
 
 const App = (props) => {
@@ -24,6 +25,8 @@ const App = (props) => {
                         render={() => <ProfileContainer />} />
                     <Route path="/users"
                         render={() => <UsersContainer />} />
+                    <Route path="/login"
+                        render={() => <LoginPage />} />
                 </div>
             </div>
 

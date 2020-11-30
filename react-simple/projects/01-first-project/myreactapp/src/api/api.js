@@ -14,14 +14,19 @@ export const usersAPI = {
             return response.data
         })
     },
-    getUnfollow(u) {
-        return instance.delete(`follow/${u.id}`).then(response => response.data)
+    unfollow(userId) {
+        return instance.delete(`follow/${userId}`).then(response => response.data)
     },
-    getFollow(u) {
-        return instance.post(`follow/${u.id}`, {}).then(response => response.data)
+    follow(userId) {
+        return instance.post(`follow/${userId}`, {}).then(response => response.data)
     },
-    getAuth() {
-        return instance.get(`auth/me`).then(response => response.data)
-    }
+    getProfile(userId) {
+        return instance.get(`profile/` + userId)
+    },
 }
 
+export const authAPI = {
+    me() {
+        return instance.get(`auth/me`).then(response => response.data)
+    },
+}
