@@ -1,5 +1,5 @@
 .field {
-  background-color: tomato;
+  background-color: rgb(71, 227, 255);
   text-align: center;
 }
 .btn {
@@ -15,9 +15,8 @@
 }
 .taskItem {
   background-color: burlywood;
-  border: 2px solid blue;
+  border: 2px solid rgb(255, 0, 200);
   padding: 10px;
-
   margin: 20px;
   display: block;
   margin-left: 30%;
@@ -25,7 +24,7 @@
 }
 
 body {
-  background-color: tomato;
+  background-color: rgb(71, 255, 215);
   text-align: center;
   margin: 20px;
 }

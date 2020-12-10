@@ -1,23 +1,34 @@
 import React, { Component } from 'react';
 import './App.css';
 import Car from './Car/Car';
+import Counter from './Conuter/Conuter';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 // function App() {
 
 //   );
 // }
 
-class App extends Component {
 
-  state = {
-    cars: [
-      { name: 'lada', year: '2021' },
-      { name: 'vw', year: '2024' },
-      { name: 'mers', year: '2026' },
-    ],
-    pageTitle: 'React Car',
-    showCars: false
+
+class App extends Component {
+  constructor(props) {
+    console.log('app constuctor')
+    super(props)
+
+    this.state = {
+      clicked: false,
+      cars: [
+        { name: 'lada', year: 2021 },
+        { name: 'vw', year: 2024 },
+        { name: 'mers', year: 2026 },
+      ],
+      pageTitle: 'React Car',
+      showCars: false
+    }
+
   }
+
 
 
   toggleCarsHandler = () => {
@@ -43,7 +54,15 @@ class App extends Component {
 
   }
 
+  componentWillMount() {
+    console.log('componentWillMount')
+  }
+  componentDidMount() {
+    console.log('componentDidMount')
+  }
+
   render() {
+    console.log('рендер')
     console.log('был сделан рендер')
     const divStyle = {
       'text-align': 'center'
@@ -53,13 +72,16 @@ class App extends Component {
 
     if (this.state.showCars) {
       cars = this.state.cars.map((car, index) => {
-        return (<Car
-          key={index}
-          name={car.name}
-          year={car.year}
-          onDelete={this.deleteHandler.bind(this, index)}
-          onChangeName={(event) => this.onChangeName(event.target.value, index)}
-        />
+        return (
+          <ErrorBoundary key={index}>
+            <Car
+              name={car.name}
+              year={car.year}
+              index={index}
+              onDelete={this.deleteHandler.bind(this, index)}
+              onChangeName={(event) => this.onChangeName(event.target.value, index)}
+            />
+          </ErrorBoundary>
         )
       })
     }
@@ -68,10 +90,20 @@ class App extends Component {
     return (
       <div style={divStyle}>
         <h1>{this.state.pageTitle}</h1>
+        <Counter />
+        <h2>{this.props.title}</h2>
 
         <button
           onClick={this.toggleCarsHandler} > Toggle Cars</button>
-        { cars}
+        <button onClick={() => this.setState({ clicked: true })}>
+          Change clcidefd </button>
+        <div style={{
+          width: 400,
+          margin: 'auto',
+          paddingTop: '20px'
+        }}>
+          {cars}
+        </div>
       </div >
     )
   }
