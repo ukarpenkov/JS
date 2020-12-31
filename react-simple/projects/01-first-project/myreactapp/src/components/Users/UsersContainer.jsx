@@ -3,23 +3,23 @@ import Users from './Users';
 import { connect } from "react-redux";
 import { follow, setCurrentPage, unfollow, toggleFollowingProgress, getUsers, followSuccess, unfollowSuccess } from "../../redux/users-reducer";
 import Preloader from '../common/preloader/Preloader';
-import { withAuthRedirect } from '../../hoc/WithAuthRedirect';
 import { compose } from 'redux';
+import { getPageSize, getAllUsers, getTotalUsersCount, getCurrentPage, getIsFetching, getFollowingInProgress } from '../../redux/users-selectors';
 
 
 class UsersContainer extends React.Component {
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize)
+        const { currentPage, pageSize } = this.props
+        this.props.getUsers(currentPage, pageSize)
     }
     onPageChanged = (pageNumber) => {
-        this.props.getUsers(pageNumber, this.props.pageSize)
+        const { pageSize } = this.props
+        this.props.getUsers(pageNumber, pageSize)
     }
 
     render() {
         return <>
-
             {this.props.isFetching ? <Preloader /> : null}
-
             <Users totalUsersCount={this.props.totalUsersCount}
                 pageSize={this.props.pageSize}
                 currentPage={this.props.currentPage}
@@ -35,17 +35,16 @@ class UsersContainer extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress,
+        users: getAllUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state),
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state),
     }
 }
 
 export default compose(
-    withAuthRedirect,
     connect(mapStateToProps, {
         follow,
         unfollow,

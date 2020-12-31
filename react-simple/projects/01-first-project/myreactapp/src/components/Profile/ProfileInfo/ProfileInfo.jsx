@@ -2,35 +2,26 @@ import React from 'react';
 import Preloader from '../../common/preloader/Preloader';
 import s from './ProfileInfo.module.css';
 import ProfileStatus from './ProfileStatus'
+import ProfileStatusWithHooks from './ProfileStatusWithHooks';
 
 
-const ProfileInfo = (props) => {
-  if (!props.profile) {
+const ProfileInfo = ({ profile, status, updateStatus }) => {
+  if (!profile) {
     return <Preloader />
   }
   return (
     <div>
-      {/* <div className={s.wall}>
-        <img
-          src='https://upload.wikimedia.org/wikipedia/commons/2/20/Tokyo_Tower_and_Tokyo_Sky_Tree_2011_January.jpg' />
-      </div> */}
       <div className={s.descriptionBlock}>
-        <img src={props.profile.photos.large} />
-        <ProfileStatus status={props.status} updateStatus={props.updateStatus} />
+        <img src={profile.photos.large} />
+        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
         <div>
-          <p>
-            {props.profile.aboutMe}
-          </p>
+          <p>{profile.aboutMe}</p>
         </div>
         <div>
-          <p>
-            {props.profile.lookingForAJobDescription}
-          </p>
+          <p>{profile.lookingForAJobDescription}</p>
         </div>
         <div>
-          <p>
-            {props.profile.fullName}
-          </p>
+          <p>{profile.fullName}</p>
         </div>
       </div>
     </div>
