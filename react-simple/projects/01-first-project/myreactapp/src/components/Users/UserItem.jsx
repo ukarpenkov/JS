@@ -2,6 +2,7 @@ import React from 'react'
 import s from './Users.module.css'
 import userPhoto from '../../assets/images/user.jpg'
 import { NavLink } from 'react-router-dom'
+import { toggleFollowingProgress } from '../../redux/users-reducer'
 
 let UserItem = ({ user, followingInProgress, unfollow, follow }) => {
     return < div >
@@ -15,7 +16,7 @@ let UserItem = ({ user, followingInProgress, unfollow, follow }) => {
                 {user.followed
                     ? <button disabled={followingInProgress
                         .some(id => id === user.id)}
-                        onClick={() => { unfollow(user.id) }}>
+                        onClick={() => { unfollow(user.id) }} >
                         Unfollow</button>
                     : <button disabled={followingInProgress.some(id => id === user.id)}
                         onClick={() => { follow(user.id) }}>

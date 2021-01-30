@@ -1,30 +1,30 @@
-import React from 'react';
-import s from './Select.module.css'
+import React from 'react'
+import classes from './Select.module.css'
 
 const Select = props => {
+  const htmlFor = `${props.label}-${Math.random()}`
 
-    const htmlFor = `${props.label}-${Math.random()}`
-    return (
-        <div className={s.Select}>
-            <label htmlFor={htmlFor}></label>
-            <select
-                id={htmlFor}
-                value={props.value}
-                onChange={props.onChange}
+  return (
+    <div className={classes.Select}>
+      <label htmlFor={htmlFor}>{props.label}</label>
+      <select
+        id={htmlFor}
+        value={props.value}
+        onChange={props.onChange}
+      >
+        {props.options.map((option, index) => {
+          return (
+            <option
+              value={option.value}
+              key={option.value + index}
             >
-                {props.options.map((option, index) => {
-                    return (
-                        <option
-                            value={option.value}
-                            key={option.value + index}
-                        >
-                            {option.text}
-                        </option>
-                    )
-                })}
-            </select>
-        </div>
-    )
+              {option.text}
+            </option>
+          )
+        })}
+      </select>
+    </div>
+  )
 }
 
 export default Select

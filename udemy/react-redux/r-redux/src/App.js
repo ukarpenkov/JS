@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './App.scss'
+import Counter from './Counter'
+import { add, addNumber, asyncAdd, sub } from './redux/actions/actions'
+
 
 class App extends Component {
 
@@ -22,6 +25,10 @@ class App extends Component {
           <button onClick={this.props.toNull}>0</button>
 
         </div>
+        <div className="Actions">
+          <button onClick={() => this.props.onAsyncAdd(1000)}>async +1000</button>
+        </div>
+        <Counter />
       </div>
     )
   }
@@ -29,16 +36,17 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    counter: state.counter
+    counter: state.counter1.counter
   }
 }
 function mapDispatchToProps(dispatch) {
   return {
-    onAdd: () => dispatch({ type: 'ADD' }),
-    onSub: () => dispatch({ type: 'SUB' }),
+    onAdd: () => dispatch(add()),
+    onSub: () => dispatch(sub()),
     onAdd10: () => dispatch({ type: 'ADD10' }),
-    onAddNumber: number => dispatch({ type: 'ADD_NUMBER', payload: number }),
-    toNull: number => dispatch({ type: 'TO_NULL', payload: number })
+    onAddNumber: number => dispatch(addNumber(number)),
+    toNull: number => dispatch({ type: 'TO_NULL', payload: number }),
+    onAsyncAdd: number => dispatch(asyncAdd(number))
   }
 }
 

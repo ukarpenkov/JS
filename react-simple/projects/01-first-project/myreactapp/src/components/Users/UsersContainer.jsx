@@ -1,7 +1,7 @@
 import React from 'react';
 import Users from './Users';
 import { connect } from "react-redux";
-import { follow, setCurrentPage, unfollow, toggleFollowingProgress, getUsers, followSuccess, unfollowSuccess } from "../../redux/users-reducer";
+import { follow, setCurrentPage, unfollow, toggleFollowingProgress, followSuccess, unfollowSuccess, requestUsers } from "../../redux/users-reducer";
 import Preloader from '../common/preloader/Preloader';
 import { compose } from 'redux';
 import { getPageSize, getAllUsers, getTotalUsersCount, getCurrentPage, getIsFetching, getFollowingInProgress } from '../../redux/users-selectors';
@@ -50,7 +50,7 @@ export default compose(
         unfollow,
         setCurrentPage,
         toggleFollowingProgress,
-        getUsers,
+        getUsers: requestUsers,
         followSuccess,
         unfollowSuccess
     }))(UsersContainer)
