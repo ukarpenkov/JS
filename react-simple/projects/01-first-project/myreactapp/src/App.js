@@ -3,7 +3,7 @@ import './App.css';
 import Navbar from './components/Navbar/Navbar.jsx';
 import { BrowserRouter, Redirect, Route, Switch, withRouter } from "react-router-dom";
 
-import UsersContainer from './components/Users/UsersContainer.jsx';
+import UsersContainer from './components/Users/UsersContainer';
 
 import HeaderContainer from './components/Header/HeaderContainer.jsx';
 import LoginPage from './components/Login/Login';
@@ -47,7 +47,7 @@ class App extends React.Component {
                         <Route path="/profile/:userId?"
                             render={withSuspense(ProfileContainer)} />
                         <Route path="/users"
-                            render={() => <UsersContainer />} />
+                            render={() => <UsersContainer pageTitle={'Название страницы'} />} />
                         <Route path="/login"
                             render={() => <LoginPage />} />
                         <Route path="*"
