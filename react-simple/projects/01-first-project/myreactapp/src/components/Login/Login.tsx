@@ -19,7 +19,7 @@ export type LoginFormValuesType = {
   captcha: string
 }
 
-type LoginFormValuesTypeKeys = keyof LoginFormValuesType
+type LoginFormValuesTypeKeys = Extract<keyof LoginFormValuesType, string>
 
 const LoginForm: React.FC<
   InjectedFormProps<LoginFormValuesType, LoginFormOwnProps> & LoginFormOwnProps

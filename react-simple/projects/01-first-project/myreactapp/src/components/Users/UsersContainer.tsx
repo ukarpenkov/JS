@@ -1,15 +1,7 @@
 import React from 'react'
 import Users from './Users'
 import { connect } from 'react-redux'
-import {
-  follow,
-  setCurrentPage,
-  unfollow,
-  toggleFollowingProgress,
-  followSuccess,
-  unfollowSuccess,
-  requestUsers,
-} from '../../redux/users-reducer'
+import { follow, unfollow, requestUsers } from '../../redux/users-reducer'
 import Preloader from '../common/preloader/Preloader'
 import { compose } from 'redux'
 import {
@@ -89,10 +81,7 @@ export default compose(
     {
       follow,
       unfollow,
-      // toggleFollowingProgress,
       getUsers: requestUsers,
-      // followSuccess,
-      // unfollowSuccess,
     }
   )
 )(UsersContainer)
