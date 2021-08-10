@@ -1,17 +1,8 @@
-import { type } from 'os'
 import { FormAction, stopSubmit } from 'redux-form'
 import { profileAPI } from '../api/profileAPI'
-import { usersAPI } from '../api/usersAPI'
 
 import { PhotosType, PostType, ProfileType } from '../types/types'
 import { BaseThunkType, InferActionsTypes } from './redux-store'
-
-const ADD_POST = 'SN/PROFILE/ADD-POST'
-// const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT'
-const SET_USER_PROFILE = 'SN/PROFILE/SET_USER_PROFILE'
-const SET_STATUS = 'SN/PROFILE/SET_STATUS'
-const DELETE_POST = 'SN/PROFILE/DELETE_POST'
-const SAVE_PHOTO_SUCCESS = 'SN/PROFILE/SAVE_PHOTO_SUCCESS'
 
 let initialState = {
   posts: [
@@ -29,7 +20,7 @@ const profileReducer = (
   action: ActionsType
 ): InitialStateType => {
   switch (action.type) {
-    case ADD_POST: {
+    case 'SN/PROFILE/ADD-POST': {
       let newPost = {
         id: 5,
         message: action.newPostText,
@@ -47,22 +38,22 @@ const profileReducer = (
     //         newPostText: action.newText
     //     }
     // }
-    case SET_STATUS: {
+    case 'SN/PROFILE/SET_STATUS': {
       return {
         ...state,
         status: action.status,
       }
     }
-    case SET_USER_PROFILE: {
+    case 'SN/PROFILE/SET_USER_PROFILE': {
       return { ...state, profile: action.profile }
     }
-    case DELETE_POST: {
+    case 'SN/PROFILE/DELETE_POST': {
       return {
         ...state,
         posts: state.posts.filter((p) => p.id != action.postId),
       }
     }
-    case SAVE_PHOTO_SUCCESS: {
+    case 'SN/PROFILE/SAVE_PHOTO_SUCCESS': {
       return {
         ...state,
         profile: { ...state.profile, photos: action.photos } as ProfileType,
@@ -76,27 +67,27 @@ const profileReducer = (
 export const actions = {
   addPostActionCreator: (newPostText: string) =>
     ({
-      type: ADD_POST,
+      type: 'SN/PROFILE/ADD-POST',
       newPostText,
     } as const),
   setUserProfile: (profile: ProfileType) =>
     ({
-      type: SET_USER_PROFILE,
+      type: 'SN/PROFILE/SET_USER_PROFILE',
       profile,
     } as const),
   setStatus: (status: string) =>
     ({
-      type: SET_STATUS,
+      type: 'SN/PROFILE/SET_STATUS',
       status,
     } as const),
   deletePost: (postId: number) =>
     ({
-      type: DELETE_POST,
+      type: 'SN/PROFILE/DELETE_POST',
       postId,
     } as const),
   savePhotoSuccess: (photos: PhotosType) =>
     ({
-      type: SAVE_PHOTO_SUCCESS,
+      type: 'SN/PROFILE/SAVE_PHOTO_SUCCESS',
       photos,
     } as const),
 }

@@ -1,4 +1,3 @@
-import { ProfileType } from '../types/types'
 import profileReducer, { actions } from './profile-reducer'
 
 let state = {
