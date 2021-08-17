@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
 import './App.css'
-import Navbar from './components/Navbar/Navbar.jsx'
+import Navbar from './components/Navbar/Navbar'
 import {
   BrowserRouter,
   Redirect,
@@ -11,7 +11,7 @@ import {
 
 import UsersContainer from './components/Users/UsersContainer'
 
-import HeaderContainer from './components/Header/HeaderContainer.jsx'
+import HeaderContainer from './components/Header/HeaderContainer'
 import LoginPage from './components/Login/Login'
 import { connect, Provider } from 'react-redux'
 import { compose } from 'redux'

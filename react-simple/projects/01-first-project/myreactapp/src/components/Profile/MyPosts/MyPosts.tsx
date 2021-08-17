@@ -14,12 +14,10 @@ import {
 } from '../../common/FormsControls/FormsControls'
 import { PostType } from '../../../types/types'
 
-type MyPostPropsType = {
-  posts: Array<PostType>
-  addPost: (newPostText: string) => void
-}
+export type MapPropsType = { posts: Array<PostType> }
+export type DispatchPropsType = { addPost: (newPostText: string) => void }
 
-const MyPosts: React.FC<MyPostPropsType> = (props) => {
+const MyPosts: React.FC<MapPropsType & DispatchPropsType> = (props) => {
   let postsElements = props.posts.map((p) => (
     <Post key={p.id} message={p.message} likesCount={p.likesCount} />
   ))

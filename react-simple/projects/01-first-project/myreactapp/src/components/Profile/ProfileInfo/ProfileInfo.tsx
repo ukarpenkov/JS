@@ -4,10 +4,10 @@ import s from './ProfileInfo.module.css'
 import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 import userPhoto from '../../../assets/images/user.jpg'
 import ProfileDataForm from './ProfileDataForm'
-import { ProfileType } from '../../../types/types'
+import { ContactsType, ProfileType } from '../../../types/types'
 
 type PropsType = {
-  profile: ProfileType
+  profile: ProfileType | null
   status: string
   updateStatus: (status: string) => void
   isOwner: boolean
@@ -44,7 +44,7 @@ const ProfileInfo: React.FC<PropsType> = ({
   return (
     <div>
       <div className={s.descriptionBlock}>
-        <img src={profile.photos.large || userPhoto} classNames={s.mainPhoto} />
+        <img src={profile.photos.large || userPhoto} className={s.mainPhoto} />
         {isOwner && <input type={'file'} onChange={onMainPhotoSelected} />}
         <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
         {editMode ? (
@@ -117,7 +117,7 @@ const ProfileData: React.FC<ProfileDataPropsType> = ({
               <Contact
                 key={key}
                 contactTitle={key}
-                contactValue={profile.contacts[key]}
+                contactValue={profile.contacts[key as keyof ContactsType]}
               />
             )
           })}
@@ -127,7 +127,15 @@ const ProfileData: React.FC<ProfileDataPropsType> = ({
   )
 }
 
-export const Contact = ({ contactTitle, contactValue }) => {
+type ContactsPropsType = {
+  contactTitle: string
+  contactValue: string
+}
+
+export const Contact: React.FC<ContactsPropsType> = ({
+  contactTitle,
+  contactValue,
+}) => {
   return (
     <div className={s.contact}>
       <b>{contactTitle}: </b> {contactValue}

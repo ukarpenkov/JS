@@ -6,14 +6,6 @@ import { UserType } from '../types/types'
 import { updateObjectInArray } from '../utils/object-helpers'
 import { BaseThunkType, InferActionsTypes } from './redux-store'
 
-// const FOLLOW = 'FOLLOW'
-// const UNFOLLOW = 'UNFOLLOW'
-// const SET_USERS = 'SET_USERS'
-// const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
-// const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
-// const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHIN'
-// const TOGGLE_IS_FOLLOWING_IN_PROGRESS = 'TOGGLE_IS_FOLLOWING_IN_PROGRESS'
-
 let initialState = {
   users: [] as Array<UserType>,
   pageSize: 10,
@@ -155,6 +147,6 @@ export const unfollow = (userId: number): ThunkType => {
 }
 
 export default usersReducer
-type InitialState = typeof initialState
+export type InitialState = typeof initialState
 type ThunkType = BaseThunkType<ActionsTypes>
 type ActionsTypes = InferActionsTypes<typeof actions>

@@ -9,7 +9,7 @@ let state = {
   ],
   profile: null,
   status: '',
-  newPostText: '',
+  // newPostText: '',
 }
 
 test('posts length >5', () => {
