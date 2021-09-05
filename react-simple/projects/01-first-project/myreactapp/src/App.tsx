@@ -9,16 +9,15 @@ import {
   withRouter,
 } from 'react-router-dom'
 
-import UsersContainer from './components/Users/UsersContainer'
-
 import HeaderContainer from './components/Header/HeaderContainer'
-import LoginPage from './components/Login/Login'
+import { LoginPage } from './components/Login/LoginPage'
 import { connect, Provider } from 'react-redux'
 import { compose } from 'redux'
 import { initializeApp } from './redux/app-reducer'
 import Preloader from './components/common/preloader/Preloader'
 import store, { AppStateType } from './redux/redux-store'
 import { withSuspense } from './hoc/withSuspense'
+import { UsersPage } from './components/Users/UsersContainer'
 //import DialogsContainer from './components/Dialogs/DialogsContainer.jsx';
 const DialogsContainer = React.lazy(
   () => import('./components/Dialogs/DialogsContainer')
@@ -67,7 +66,7 @@ class App extends React.Component<MapPropsType & DispatchPropsType> {
             />
             <Route
               path="/users"
-              render={() => <UsersContainer pageTitle={'Название страницы'} />}
+              render={() => <UsersPage pageTitle={'Название страницы'} />}
             />
             <Route path="/login" render={() => <LoginPage />} />
             <Route path="*" render={() => <div>404 not found</div>} />
