@@ -1,16 +1,13 @@
 import { Avatar } from 'antd'
-import React, { useEffect, useState } from 'react'
-
-const ws = new WebSocket(
-  'wss://social-network.samuraijs.com/handlers/ChatHandler.ashx'
-)
-
-export type ChatMessageType = {
-  message: string
-  photo: string
-  userId: number
-  userName: string
-}
+import React, { useEffect, useRef, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { ChatMessageType } from '../../api/chatAPI'
+import {
+  startMessagesListening,
+  stopMessagesListening,
+  sendMessage,
+} from '../../redux/chat-reducer'
+import { AppStateType } from '../../redux/redux-store'
 
 const ChatPage: React.FC = () => {
   return (
@@ -19,56 +16,90 @@ const ChatPage: React.FC = () => {
     </div>
   )
 }
-
+let ws: WebSocket
 const Chat: React.FC = () => {
+  const dispatch = useDispatch()
+
+  const status = useSelector((state: AppStateType) => state.chat.status)
+  useEffect(() => {
+    dispatch(startMessagesListening())
+    return () => {
+      dispatch(stopMessagesListening())
+    }
+  }, [])
+
   return (
     <div>
-      <Messages />
-      <AddMessageForm />
+      {status === 'error' && <div>Error!!! Please Refresh Page</div>}
+
+      <>
+        <Messages />
+        <AddMessageForm />
+      </>
     </div>
   )
 }
-const Messages: React.FC = () => {
-  const [messages, setMessages] = useState<ChatMessageType[]>([])
+const Messages: React.FC<{}> = ({}) => {
+  const messages = useSelector((state: AppStateType) => state.chat.messages)
+  const messagesAnchorRef = useRef<HTMLDivElement>(null)
+  const [isAutoScroll, setIsAutoScroll] = useState(true)
+  const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
+    const element = e.currentTarget
+    if (
+      Math.abs(
+        element.scrollHeight - element.scrollTop - element.clientHeight
+      ) < 300
+    ) {
+      !isAutoScroll && setIsAutoScroll(true)
+    } else {
+      isAutoScroll && setIsAutoScroll(false)
+    }
+  }
 
   useEffect(() => {
-    ws.addEventListener('message', (e: MessageEvent) => {
-      let newMessages = JSON.parse(e.data)
-      setMessages((prevMessages) => [...prevMessages, ...newMessages])
-    })
-  }, [])
-
+    if (isAutoScroll) {
+      messagesAnchorRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [messages])
   return (
     <div
       style={{
         height: '600px',
         overflow: 'auto',
       }}
+      onScroll={scrollHandler}
     >
       {messages.map((m, index) => (
         <Message message={m} key={index} />
       ))}
+      <div ref={messagesAnchorRef}></div>
     </div>
   )
 }
-const Message: React.FC<{ message: ChatMessageType }> = ({ message }) => {
-  return (
-    <div>
-      <img src={message.photo} style={{ width: '30px' }} />{' '}
-      <b>{message.userName}</b>
-      <br />
-      {message.message}
-      <hr />
-    </div>
-  )
-}
-const AddMessageForm: React.FC = () => {
+const Message: React.FC<{ message: ChatMessageType }> = React.memo(
+  ({ message }) => {
+    return (
+      <div>
+        <img src={message.photo} style={{ width: '30px' }} />{' '}
+        <b>{message.userName}</b>
+        <br />
+        {message.message}
+        <hr />
+      </div>
+    )
+  }
+)
+const AddMessageForm: React.FC<{}> = () => {
   const [message, setMessage] = useState('')
-  const sendMessage = () => {
+
+  const dispatch = useDispatch()
+
+  const status = useSelector((state: AppStateType) => state.chat.status)
+  const sendMessageHandler = () => {
     if (!message) {
       return
     }
-    ws.send(message)
+    dispatch(sendMessage(message))
     setMessage('')
   }
   return (
@@ -80,7 +111,9 @@ const AddMessageForm: React.FC = () => {
         ></textarea>
       </div>
       <div>
-        <button onClick={sendMessage}>Отправить</button>
+        <button disabled={status !== 'ready'} onClick={sendMessageHandler}>
+          Отправить
+        </button>
       </div>
     </div>
   )
