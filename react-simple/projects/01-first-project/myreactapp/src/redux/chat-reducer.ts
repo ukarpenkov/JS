@@ -1,3 +1,4 @@
+import { v1 } from 'uuid'
 import { Dispatch } from 'redux'
 import { FormAction, stopSubmit } from 'redux-form'
 import { ResultCodeEnum, ResultCodeForCaptchaEnum } from '../api/api'
@@ -5,11 +6,14 @@ import { authAPI } from '../api/authAPI'
 import { chatAPI, ChatMessageType, StatusType } from '../api/chatAPI'
 import { securityAPI } from '../api/securityAPI'
 import { BaseThunkType, InferActionsTypes } from './redux-store'
+import { type } from 'os'
 
 let initialState = {
-  messages: [] as ChatMessageType[],
+  messages: [] as ChatMessageTypeWithoutAPI[],
   status: 'pending' as StatusType,
 }
+
+type ChatMessageTypeWithoutAPI = ChatMessageType & { id: string }
 
 export type InitialStateType = typeof initialState
 
@@ -21,9 +25,10 @@ const chatReducer = (
     case 'SN/chat/MESSAGES_RECEIVED':
       return {
         ...state,
-        messages: [...state.messages, ...action.payload.messages].filter(
-          (m, index, array) => index < 100
-        ),
+        messages: [
+          ...state.messages,
+          ...action.payload.messages.map((m) => ({ ...m, id: v1() })),
+        ].filter((m, index, array) => index >= array.length - 100),
       }
     case 'SN/chat/STATUS_CHANGE':
       return {

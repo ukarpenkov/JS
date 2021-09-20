@@ -70,7 +70,7 @@ const Messages: React.FC<{}> = ({}) => {
       onScroll={scrollHandler}
     >
       {messages.map((m, index) => (
-        <Message message={m} key={index} />
+        <Message message={m} key={m.id} />
       ))}
       <div ref={messagesAnchorRef}></div>
     </div>
